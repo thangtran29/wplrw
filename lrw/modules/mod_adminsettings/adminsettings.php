@@ -7,16 +7,16 @@
  * Website: http://lorenweb.com/
  */
 
-new layouts();
-class layouts extends lrw
-{
+new adminsettings();
+class adminsettings extends lrw
+{ 
     private $hookAdminPage;
             
     function __construct() 
     {
         parent::__construct();
         
-        $this->hookAdminPage = "lrw_layouts";
+        $this->hookAdminPage = "lrw_admin_settings";
         
         $this->loadActions();
         $this->loadFilters();
@@ -45,16 +45,12 @@ class layouts extends lrw
     
     public function adminPage()
     {
-        add_menu_page( 'Layout Settings', 'Layout Settings', 'manage_options', $this->hookAdminPage, array(&$this,'adminPageRender'), '', 96 ); 
+        add_menu_page( 'LRW Settings', 'LRW Settings', 'manage_options', $this->hookAdminPage, array(&$this,'adminPageRender'), '', 97 ); 
     }
     
     public function adminPageRender()
     {
-        global $menu; 
-        echo '<pre>';
-        print_r($menu);
-        echo '<pre>';
         echo '123';
     }
-
+    
 }
