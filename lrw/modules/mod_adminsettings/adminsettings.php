@@ -50,7 +50,7 @@ class adminsettings extends lrw
     
     public function adminPageRender()
     {
-        echo '123';
+        include_once 'views/main.php';
     }
     
 }
