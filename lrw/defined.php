@@ -9,6 +9,7 @@
 
 define("LRW_PATH", (__DIR__));
 define("LRW_PATH_MODULES", LRW_PATH."/modules/");
+define("LRW_PATH_LIBRARIES", LRW_PATH."/libraries/");
 
 define("LRW_URL", get_bloginfo("url"));
 define("LRW_TEMPLATE_URL", get_bloginfo("template_url"));
