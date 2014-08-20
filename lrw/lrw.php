@@ -21,11 +21,37 @@ if ($handle = opendir(LRW_PATH_MODULES)) {
 
 class lrw 
 {
+    protected $message;
             
     function __construct() 
     {
-        //#
+        $this->message = array();
     }
-
+    
+    /*
+     * set message with 4 type: info,warning,danger,success
+     * @param string $type
+     * @param string $meeasge
+     */
+    protected function setMessage($type,$message)
+    {
+        $this->message[$type][] = $message;
+    }
+    
+    /*
+     * get message 
+     * @param strong $type
+     */
+    protected function getMessage($type)
+    {
+        return $this->message[$type];
+    }
+    
+    protected function getLibraries($lib)
+    {
+        include_once LRW_PATH_LIBRARIES . "/" . $lib . ".php";
+        $class = $lib;
+        return new $class();
+    }
 }
 

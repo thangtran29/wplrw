@@ -22,4 +22,5 @@ define("LRW_ADMIN_PAGE_HOOK_NAME", "toplevel_page_");
  * defined scripts
  */
 wp_register_style( 'css-bootstraps', LRW_TEMPLATE_ASSETS . "css/bootstrap.min.css" );
+wp_register_style( 'css-bootstraps-theme', LRW_TEMPLATE_ASSETS . "css/bootstrap-theme.min.css" );
 wp_register_script('js-bootstrap', LRW_TEMPLATE_ASSETS . "js/bootstrap.min.js");
