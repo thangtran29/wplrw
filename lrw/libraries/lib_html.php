@@ -15,9 +15,26 @@ class lib_html
         
     }
     
-    public function select() 
+    public function select($name,$options,$selected = '',$params = '')
     {
-        echo '111';
+        $return = '<select name="'.$name.'" id="'.$name.'"';
+        if(is_array($params))
+        {
+            foreach($params as $key=>$value)
+            {
+                $return.= ' '.$key.'="'.$value.'"';
+            }
+        }
+        else
+        {
+            $return.= $params;
+        }
+        $return.= '>';
+        foreach($options as $key=>$value)
+        {
+            $return.='<option value="'.$value.'"'.($selected != $value ? '' : ' selected="selected"').'>'.$key.'</option>';
+        }
+        return $return.'</select>';
     }
     
 }

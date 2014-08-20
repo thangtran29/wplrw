@@ -71,10 +71,14 @@ class adminsettings extends lrw
      */
     public function adminPageRender()
     {
-        
+        if (isset($_REQUEST['admin_settings']))
+        {
+            $this->setData($_REQUEST['admin_settings']);
+        }
         $data = $this->getData();
+        $message = $this->getMessage();
         include_once 'views/main.php';
-        $this->html->select();
+        //$this->html->select();
     }
     
     /*
@@ -93,15 +97,24 @@ class adminsettings extends lrw
      */
     private function setData($data)
     {
+        $action = TRUE;
         if ( $this->getData() !== FALSE ) 
         {
-            update_option( $this->metaName, $data );
+            $action = update_option( $this->metaName, $data );
         } 
         else 
         {
             $deprecated = null;
             $autoload = 'no';
-            add_option( $this->metaName, $data, $deprecated, $autoload );
+            $action = add_option( $this->metaName, $data, $deprecated, $autoload );
+        }
+        if ($action === FALSE)
+        {
+            $this->setMessage("danger","Save is fail!");
+        }
+        else
+        {
+            $this->setMessage("success","Save is success!");
         }
     }
     

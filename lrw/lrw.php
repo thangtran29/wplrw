@@ -42,9 +42,12 @@ class lrw
      * get message 
      * @param strong $type
      */
-    protected function getMessage($type)
+    protected function getMessage($type = "")
     {
-        return $this->message[$type];
+        if ($type == "")
+            return $this->message;
+        else
+            return $this->message[$type];
     }
     
     protected function getLibraries($lib)
