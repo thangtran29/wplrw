@@ -20,7 +20,12 @@
 						<div class="handlediv" title="Click to toggle"><br></div><h3 class="hndle"><span><?php echo $v['name'] ?></span></h3>
 						<div class="inside">
 							<div class="main">
-								123
+								<p>
+									<input type="text" id="name_sidebar_<?php echo $k; ?>" class="widefat" value="<?php echo $v['name'] ?>"  />
+								</p>
+								<p>
+									<input type="text" id="name_sidebar_<?php echo $k; ?>" class="widefat" value="<?php echo $v['class'] ?>"  />
+								</p>
 							</div>
 						</div>
 					</div>
