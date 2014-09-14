@@ -11,12 +11,43 @@ new layouts();
 class layouts extends lrw
 {
     private $hookAdminPage;
+    private $defaultSidebar;
             
     function __construct() 
     {
         parent::__construct();
         
         $this->hookAdminPage = "lrw_layouts";
+        
+        $this->defaultSidebar = array(
+        	'header' => array(
+        				'name'          => __( 'Sidebar header', LRW_THEME_DOMAIN_NAME ),
+						'id'            => 'sidebar-header',
+						'description'   => '',
+					    'class'         => '',
+						'before_widget' => '<div id="%1$s" class="widget %2$s">',
+						'after_widget'  => '</div>',
+						'before_title'  => '<h2 class="widgettitle">',
+						'after_title'   => '</h2>' ),
+        	'container' => array(
+        				'name'          => __( 'Sidebar container', LRW_THEME_DOMAIN_NAME ),
+        				'id'            => 'sidebar-container',
+        				'description'   => '',
+        				'class'         => '',
+        				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        				'after_widget'  => '</div>',
+        				'before_title'  => '<h2 class="widgettitle">',
+        				'after_title'   => '</h2>' ),
+        	'footer' => array(
+        				'name'          => __( 'Sidebar footer', LRW_THEME_DOMAIN_NAME ),
+        				'id'            => 'sidebar-footer',
+        				'description'   => '',
+        				'class'         => '',
+        				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        				'after_widget'  => '</div>',
+        				'before_title'  => '<h2 class="widgettitle">',
+        				'after_title'   => '</h2>' ),
+        );
         
         $this->loadActions();
         $this->loadFilters();
@@ -26,11 +57,20 @@ class layouts extends lrw
     {
         add_action( 'admin_menu', array(&$this,'adminPage') );
         add_action( 'admin_enqueue_scripts', array(&$this,'loadAdminAssets') );
+        add_action( 'widgets_init', array(&$this,'registerSidebar' ));
     }
     
     private function loadFilters()
     {
         
+    }
+    
+    public function registerSidebar()
+    {
+    	foreach ($this->defaultSidebar as $item)
+    	{
+    		register_sidebar($item);
+    	}
     }
     
     public function loadAdminAssets($hook)
@@ -50,11 +90,8 @@ class layouts extends lrw
     
     public function adminPageRender()
     {
-        global $menu; 
-        echo '<pre>';
-        print_r($menu);
-        echo '<pre>';
-        echo '123';
+    	$list = $this->defaultSidebar;
+        include ("views/main.php");
     }
 
 }

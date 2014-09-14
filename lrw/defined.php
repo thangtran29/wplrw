@@ -18,6 +18,8 @@ define("LRW_TEMPLATE_ASSETS", LRW_TEMPLATE_LRW . "/assets/");
 
 define("LRW_ADMIN_PAGE_HOOK_NAME", "toplevel_page_");
 
+
+define("LRW_THEME_DOMAIN_NAME", "lorenweb");
 /*
  * defined scripts
  */
